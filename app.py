@@ -1,10 +1,12 @@
 from dotenv import load_dotenv
 load_dotenv() 
 
+from openai import OpenAI
+
 import streamlit as st
 st.title("課題提出:LLMアプリ")
 
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from langchain.schema import SystemMessage, HumanMessage
 llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
 
@@ -31,5 +33,5 @@ else:
 
 if st.button("実行"):
     st.divider()
-    st.write(result)
-    st.write("実行しました。")
+    st.write(result.content)
+    st.divider()
